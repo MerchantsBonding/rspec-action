@@ -19,4 +19,6 @@ runs:
         PGUSER: postgres
         PGPASSWORD: postgres
         RAILS_ENV: test
+        STAGING_API_KEY: foo
+        MERCHANTS_API_KEY: foo
       shell: bash
