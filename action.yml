@@ -1,0 +1,22 @@
+name: 'RSpec GitHub Action'
+description: 'Add this action to run your specs'
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/checkout@v1
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: .ruby-version
+        bundler-cache: true
+    - run: |
+        sudo apt-get -yqq install libpq-dev
+        yarn
+        bundle exec rails db:setup
+        bundle exec rspec
+      env:
+        PGHOST: localhost
+        PGUSER: postgres
+        PGPASSWORD: postgres
+        RAILS_ENV: test
+      shell: bash
