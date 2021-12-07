@@ -11,6 +11,7 @@ runs:
       with:
         ruby-version: .ruby-version
         bundler-cache: true
+        cache-version: 1
     - run: |
         sudo apt-get -yqq install libpq-dev
         yarn
